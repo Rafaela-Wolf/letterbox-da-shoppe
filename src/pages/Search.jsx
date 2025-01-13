@@ -12,7 +12,6 @@ const Search = () => {
   const [searchParams] = useSearchParams();
   const [movies, setMovies] = useState([]);
   const query = searchParams.get("q");
-  console.log('q')
 
   const getSearchedMovies = async (url) => {
     const res = await fetch(url);
@@ -25,7 +24,7 @@ const Search = () => {
     const searchWithQueryUrl = `${searchUrl}?${apiKey}&query=${query}`;
 
     getSearchedMovies(searchWithQueryUrl);
-  }, [query])
+  }, [query]);
 
   return (
     <div className="container">
@@ -34,8 +33,8 @@ const Search = () => {
       </h2>
       <div className="movies-container">
         {movies.length === 0 && <p>Carregando...</p>}
-        {movies.length > 0 && movies.map((movie) =>
-          <MovieCard key={movie.id} movie={movie} />
+        {movies.length > 0 && 
+          movies.map((movie) => <MovieCard key={movie.id} movie={movie} />
         )}
       </div>
     </div>
