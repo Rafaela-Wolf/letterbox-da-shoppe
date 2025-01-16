@@ -1,12 +1,12 @@
 .container .title {
-    color: #fff;
+    color: #f4f4f4; /* Alterada para um tom de branco mais suave */
     font-size: 2.5rem;
     text-align: center;
     margin: 2rem 0 1rem;
 }
 
 .title .query-text {
-    color: #f7d354;
+    color: #f7d354; /* Mantida a cor amarela para o destaque */
 }
 
 .movies-container {
@@ -21,13 +21,14 @@
 
 .movies-container div {
     width: 30%;
-    color: #fff;
+    color: #f4f4f4; /* Alterada para um tom de branco mais suave */
     margin-bottom: 2.5rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    background-color: #111;
+    background-color: #111; /* Mantida a cor de fundo escura */
     padding: 1rem;
+    border-radius: 5px;
 }
 
 .movies-container div img {
@@ -42,15 +43,14 @@
 }
 
 .movies-container div svg {
-    color: #f7d354;
+    color: #f7d354; /* Mantida a cor amarela para os ícones */
 }
 
 .movies-container div a {
-    background-color: #f7d354;
-    color: 2px solid #f7d354;
+    background-color: #f7d354; /* Cor de fundo do botão */
     border-radius: 5px;
     border: none;
-    color: #000;
+    color: #000; /* Texto do botão */
     padding: 1rem 0.5rem;
     text-align: center;
     align-items: center;
@@ -60,5 +60,5 @@
 .movies-container div a:hover {
     background-color: transparent;
     color: #f7d354;
-    border: 1px solid #f7d354;
+    border: 1px solid #f7d354; /* Bordas do botão no hover */
 }

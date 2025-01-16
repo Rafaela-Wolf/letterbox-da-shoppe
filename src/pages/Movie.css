@@ -1,14 +1,17 @@
 .movie-page {
-    color: #fff;
+    color: #f4f4f4; /* Cor do texto alterada para um tom mais suave */
     display: flex;
     flex-direction: column;
     max-width: 600px;
     margin: 2rem auto;
+    background-color: #111; /* Mantida a cor de fundo escura */
+    border-radius: 5px;
+    padding: 2rem;
 }
 
 .movie-page svg {
-    font-size: 1.5rem;
-    color: #f7d354;
+    font-size: 1rem;
+    color: #f7d354; /* Cor de ícones mantida */
 }
 
 .movie-page .movie-card {
@@ -23,6 +26,7 @@
 
 .movie-page .movie-card h2 {
     font-size: 2rem;
+    color: #f7d354; /* Cor de destaque para os títulos dos filmes */
 }
 
 .movie-page .movie-card p {
@@ -30,16 +34,22 @@
     align-items: center;
     justify-content: center;
     gap: 0.4rem;
+    color: #f4f4f4; /* Texto das descrições em tom mais suave */
 }
 
 .tagline {
     text-align: center;
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     margin-bottom: 2rem;
 }
 
 .info {
     margin-bottom: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
 }
 
 .info h3 {
@@ -47,6 +57,8 @@
     display: flex;
     align-items: center;
     gap: 0.5rem;
+    color: #f7d354; /* Título da informação em tom de destaque */
+    font-size: 1rem;
 }
 
 .description {
@@ -54,5 +66,7 @@
 }
 
 .description p {
+    font-size: 1rem;
     line-height: 1.4rem;
+    color: #f4f4f4; /* Texto da descrição em tom mais suave */
 }
