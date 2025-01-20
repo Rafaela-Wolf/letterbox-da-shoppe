@@ -1,14 +1,18 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { BsFillFileEarmarkTextFill, BsGraphUp, BsHourglassSplit, BsWallet2 } from "react-icons/bs";
+import { FaCalendarAlt } from "react-icons/fa";
+import { GiWorld } from "react-icons/gi";
+import { TbChartBarPopular } from "react-icons/tb";
 
 import MovieCard from '../components/MovieCard';
-import './Movie.css';
+import './MovieDetails.css';
+// import MovieGenre from "../components/MovieGenre";
 
 const moviesUrl = import.meta.env.VITE_API;
 const apiKey = import.meta.env.VITE_API_KEY;
 
-const Movie = () => {
+const MovieDetails = () => {
 
   const {id} = useParams();
   const [movie, setMovie] = useState(null);
@@ -27,6 +31,14 @@ const Movie = () => {
     });
   };
 
+  const formatDate = (date) => {
+    return new Date(date).toLocaleDateString("pt-BR", {
+      year: "numeric",
+      month: "long",
+      day: "2-digit",
+    });
+  };
+
   useEffect(() => {
     const movieUrl = `${moviesUrl}${id}?${apiKey}`;
     getMovie(movieUrl);
@@ -38,6 +50,13 @@ const Movie = () => {
         <>
           <MovieCard movie={movie} showLink={false} />
           <p className="tagline">{movie.tagline}</p>
+
+          <div className="info description">
+            <h3><BsFillFileEarmarkTextFill /> Descrição</h3>
+            <p>{movie.overview}</p>
+          </div>
+
+        {/* <MovieGenre /> */}
 
           <div className="info">
             <h3><BsWallet2 /> Orçamento</h3>
@@ -54,14 +73,25 @@ const Movie = () => {
             <p>{movie.runtime} minutos</p>
           </div>
 
-          <div className="info description">
-            <h3><BsFillFileEarmarkTextFill /> Descrição</h3>
-            <p>{movie.overview}</p>
+          <div className="info">
+            <h3><FaCalendarAlt /> Data do lançamento</h3>
+            <p>{formatDate(movie.release_date)}</p>
           </div>
+
+          <div className="info">
+            <h3><GiWorld /> Idioma original</h3>
+            <p>{movie.original_language}</p>
+          </div>
+
+          <div className="info">
+            <h3><TbChartBarPopular /> Popularidade</h3>
+            <p>{movie.popularity}</p>
+          </div>
+
         </>
       )}
     </div>
   )
 }
 
-export default Movie;
+export default MovieDetails;
