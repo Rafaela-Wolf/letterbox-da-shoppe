@@ -6,16 +6,16 @@
 }
 
 body {
-  background-color: #1E293B; /* Fundo Principal */
-  color: #FFFFFF; /* Texto Principal */
+  background-color: #1E293B; 
+  color: #FFFFFF;
 }
 
 a {
   text-decoration: none;
-  color: #03A9F4; /* Azul claro */
+  color: #03A9F4;
   transition: 0.5s;
 }
 
 a:hover {
-  color: #FF9800; /* Laranja */
+  color: #FF9800; 
 }
