@@ -1,38 +1,43 @@
 import { useEffect, useState } from "react";
-
 import MovieCard from "../components/MovieCard";
-import './MoviesGrid.css';
 
-const moviesUrl = import.meta.env.VITE_API;
-const apiKey = import.meta.env.VITE_API_KEY;
+import "./MoviesGrid.css";
+
+import { getTopRatedMovies } from "../services/api";
 
 const Home = () => {
-
   const [topMovies, setTopMovies] = useState([]);
+  const [loading, setLoading] = useState(true) 
 
-  const getTopRatedMovies = async (url) => {
-    const res = await fetch(url);
-    const data = await res.json();
+    useEffect(() => {
+      const fetchMovies = async () => {
+        setLoading(true);
+        try {
+          const movies = await getTopRatedMovies();
+          setTopMovies(movies);
+        } catch (error) {
+          console.error("Error fetching top-rated movies:", error);
+        } finally {
+          setLoading(false);
+        }
+      };
 
-    setTopMovies(data.results);
+      fetchMovies();
+    }, []);
+
+  if (loading) {
+    return <p>Loading...</p>;
   }
-
-  useEffect(() => {
-    const topRatedUrl = `${moviesUrl}top_rated?${apiKey}`;
-    getTopRatedMovies(topRatedUrl);
-  }, [])
 
   return (
     <div className="container">
-      <h2 className="title">Melhores filmes</h2>
+      <h2 className="title">Top movies</h2>
       <div className="movies-container">
-        {topMovies.length === 0 && <p>Carregando...</p>}
-        {topMovies.length > 0 && topMovies.map((movie) => 
-          <MovieCard key={movie.id} movie={movie} />
-        )}
+        {topMovies.length > 0 &&
+          topMovies.map((movie) => <MovieCard key={movie.id} movie={movie} />)}
       </div>
     </div>
-  )
-}
+  );
+};
 
 export default Home;

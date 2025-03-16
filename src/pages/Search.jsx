@@ -1,44 +1,53 @@
+import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
-import { useEffect, useState } from 'react';
-
 import MovieCard from "../components/MovieCard";
+import { searchMovies } from "../services/api"; 
 import "./MoviesGrid.css";
 
-const searchUrl = import.meta.env.VITE_SEARCH;
-const apiKey = import.meta.env.VITE_API_KEY;
-
 const Search = () => {
+    const [searchParams] = useSearchParams();
+    const [movies, setMovies] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const query = searchParams.get("q");
 
-  const [searchParams] = useSearchParams();
-  const [movies, setMovies] = useState([]);
-  const query = searchParams.get("q");
+    useEffect(() => {
+        const fetchMovies = async () => {
+            if (!query) {
+                setLoading(false);
+                setMovies([]);
+                return;
+            }
+            setLoading(true);
+            try {
+                const results = await searchMovies(query);
+                setMovies(results);
+            } catch (error) {
+                console.error("Error searching movies:", error);
+            } finally {
+                setLoading(false);
+            }
+        };
 
-  const getSearchedMovies = async (url) => {
-    const res = await fetch(url);
-    const data = await res.json();
+        fetchMovies();
+    }, [query]);
 
-    setMovies(data.results);
-  }
+    if (loading) {
+        return <p>Loading...</p>;
+    }
 
-  useEffect(() => {
-    const searchWithQueryUrl = `${searchUrl}?${apiKey}&query=${query}`;
-
-    getSearchedMovies(searchWithQueryUrl);
-  }, [query]);
-
-  return (
-    <div className="container">
-      <h2 className="title">
-        Resultados para: <span className="query-text">{query}</span>
-      </h2>
-      <div className="movies-container">
-        {movies.length === 0 && <p>Carregando...</p>}
-        {movies.length > 0 && 
-          movies.map((movie) => <MovieCard key={movie.id} movie={movie} />
-        )}
-      </div>
-    </div>
-  )
-}
+    return (
+        <div className="container">
+            <h2 className="title">
+                Results for: <span className="query-text">{query}</span>
+            </h2>
+            <div className="movies-container">
+                {movies.length > 0 &&
+                    movies.map((movie) => (
+                        <MovieCard key={movie.id} movie={movie} />
+                    ))}
+            </div>
+        </div>
+    );
+};
 
 export default Search;

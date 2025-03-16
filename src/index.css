@@ -1,21 +1,21 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Helvetica', sans-serif;
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-    background-color: #000;
-    color: #f4f4f4;
+  background-color: #1E293B; /* Fundo Principal */
+  color: #FFFFFF; /* Texto Principal */
 }
 
 a {
-    text-decoration: none;
-    color: #F7D354;
-    transition: 0.5s;
+  text-decoration: none;
+  color: #03A9F4; /* Azul claro */
+  transition: 0.5s;
 }
 
 a:hover {
-    color: #b8930c;
+  color: #FF9800; /* Laranja */
 }

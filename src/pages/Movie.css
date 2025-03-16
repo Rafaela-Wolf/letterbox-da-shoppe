@@ -1,0 +1,119 @@
+.movie-page {
+  color: #FFFFFF;
+  margin: 3rem auto;
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 2rem;
+  background-color: #2C3E50;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.movie-page svg {
+  font-size: 1.8rem;
+  color: #FF9800;
+  margin-right: 0.5rem;
+}
+
+.movie-page .movie-card {
+  margin-bottom: 2rem;
+}
+
+.movie-page .movie-card img {
+  border-radius: 8px;
+  max-width: 100%;
+  height: auto;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.movie-page .movie-card h2 {
+  font-size: 2.5rem;
+  margin: 1rem;
+  color: #03A9F4;
+}
+
+.movie-page .movie-card p {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.2rem;
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: #6B7280;
+}
+
+.tagline {
+  font-size: 1.5rem;
+  margin-bottom: 3rem;
+  color: #4CAF50;
+  font-style: italic;
+}
+
+.info {
+  margin-bottom: 2rem;
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.info h3 {
+  font-size: 1.3rem;
+  margin-bottom: 0.8rem;
+  color: #FF9800;
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+
+.info p {
+  font-size: 1.1rem;
+  line-height: 1.6rem;
+  color: #FFFFFF;
+}
+
+.description p {
+  line-height: 1.8rem;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .movie-page {
+      width: 90%;
+      padding: 1.5rem;
+  }
+
+  .movie-page .movie-card h2 {
+      font-size: 2rem;
+  }
+
+  .info {
+      width: 95%;
+  }
+}
+
+@media (max-width: 500px) {
+  .movie-page .movie-card h2,
+  .movie-page svg {
+      font-size: 1.5rem;
+  }
+  
+  .tagline {
+    font-weight: 700;
+    margin-bottom: 20px;
+    font-size: 1.2rem;
+  }
+
+  .info h3 {
+    font-size: 1.1rem;
+  }
+
+  .info p {
+    font-size: 1rem;
+  }
+}
